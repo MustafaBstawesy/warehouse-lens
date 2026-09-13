@@ -1,0 +1,12 @@
+ID;materialCode;name;description;baseUnit;imagePath;active
+aaaaaaaa-0000-4000-8000-000000001042;MAT-1042;Precision bearing;Sealed single-row deep-groove ball bearing, 30 mm bore, for conveyor drive assemblies.;EA;mat-1042.png;true
+aaaaaaaa-0000-4000-8000-000000001010;MAT-1010;Hydraulic pump seal kit;Complete seal and O-ring kit for P-series hydraulic pumps.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001156;MAT-1156;Industrial V-belt B52;Heavy-duty wrapped V-belt, section B, 52 inch, antistatic.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001201;MAT-1201;Forklift brake pad set;Front-axle brake pad set for 2.5 t electric forklifts.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001287;MAT-1287;Hex bolt M12x50 A2;Stainless steel hex bolts M12 x 50, DIN 933, box of 100.;BOX;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001330;MAT-1330;Conveyor roller 76 mm;Galvanized gravity conveyor roller, 76 mm diameter, 600 mm width.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001408;MAT-1408;Nitrile safety gloves L;Cut-resistant nitrile-coated work gloves, size L, pair.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001523;MAT-1523;Pallet wrap film roll;Clear stretch wrap film, 500 mm x 300 m, 23 micron.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001611;MAT-1611;Bearing grease cartridge;Lithium-complex EP2 grease cartridge, 400 g, for auto-lubricators.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001099;MAT-1099;Laser distance sensor;Industrial laser distance sensor, 0.05-10 m range, IO-Link.;EA;mat-generic.png;true
+aaaaaaaa-0000-4000-8000-000000001980;MAT-1980;Legacy caster wheel;Discontinued swivel caster, kept for reference only.;EA;mat-generic.png;false

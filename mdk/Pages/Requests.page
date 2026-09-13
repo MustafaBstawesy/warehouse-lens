@@ -1,0 +1,79 @@
+{
+	"_Name": "Requests",
+	"_Type": "Page",
+	"OnLoaded": "/mdk/Rules/Requests/RequestsLoad.js",
+	"OnReturning": "/mdk/Rules/Requests/RequestsLoad.js",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,requests_title)"
+	},
+	"Controls": [
+		{
+			"_Name": "RequestsSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "FilterSection",
+					"_Type": "Section.Type.FormCell",
+					"Header": {
+						"UseTopPadding": false
+					},
+					"Controls": [
+						{
+							"_Name": "SearchInput",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,requests_searchLabel)",
+							"PlaceHolder": "$(L,requests_searchPlaceholder)",
+							"Value": "/mdk/Rules/Requests/SearchValue.js",
+							"OnValueChange": "/mdk/Rules/Requests/SearchChanged.js",
+							"Styles": { "Value": "wl-info-value" }
+						},
+						{
+							"_Name": "StatusFilter",
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"Caption": "$(L,requests_filterLabel)",
+							"AllowMultipleSelection": false,
+							"IsPickerDismissedOnSelection": true,
+							"Value": "/mdk/Rules/Requests/FilterValue.js",
+							"OnValueChange": "/mdk/Rules/Requests/FilterChanged.js",
+							"PickerItems": [
+								{ "DisplayValue": "All", "ReturnValue": "ALL" },
+								{ "DisplayValue": "Awaiting approval", "ReturnValue": "AWAITING_APPROVAL" },
+								{ "DisplayValue": "Approved", "ReturnValue": "APPROVED" },
+								{ "DisplayValue": "Dispatched", "ReturnValue": "DISPATCHED" },
+								{ "DisplayValue": "Received", "ReturnValue": "RECEIVED" },
+								{ "DisplayValue": "Rejected", "ReturnValue": "REJECTED" }
+							]
+						}
+					]
+				},
+				{
+					"_Name": "RequestListSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,requests_sectionList)"
+					},
+					"Target": "/mdk/Rules/Requests/RequestItems.js",
+					"EmptySection": {
+						"Caption": "/mdk/Rules/Requests/EmptyCaption.js"
+					},
+					"ObjectCell": {
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"StatusText": "{status}",
+						"AccessoryType": "{accessory}",
+						"OnPress": "/mdk/Rules/Requests/RequestPress.js",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"Footnote": "wl-muted",
+							"StatusText": "{statusStyle}"
+						}
+					}
+				}
+			]
+		}
+	]
+}

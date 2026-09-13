@@ -1,0 +1,5 @@
+{
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ActionResult": { "_Name": "initWarehouseService" },
+	"Service": "/mdk/Services/WarehouseService.service"
+}

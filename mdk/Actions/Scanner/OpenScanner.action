@@ -1,0 +1,4 @@
+{
+	"_Type": "Action.Type.OpenBarcodeScanner",
+	"ActionResult": { "_Name": "openScanner" }
+}

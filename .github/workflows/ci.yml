@@ -1,0 +1,72 @@
+name: CI
+
+# Runs without any SAP credentials or native mobile tooling:
+#  - backend: typecheck, jest suite (in-memory SQLite), production build
+#  - mdk: metadata validation + full metadata bundle (webpack, NSS, i18n)
+# Native Android/iOS client builds are NOT covered here - see docs/testing.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  backend:
+    name: CAP backend (typecheck, tests, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cap
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cap/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+
+  mdk:
+    name: MDK metadata (validate, bundle)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - name: Validate metadata (filtering documented validator false positives)
+        run: |
+          set -o pipefail
+          npx mdk validate --project mdk 2>&1 | tee validate.log || true
+          # Known false positives (see docs/testing.md): the validator checks
+          # each CallFunction against the UNION of non-nullable parameters of
+          # ALL OData actions, so smaller actions are flagged for the submit
+          # action's parameters. Exactly 9 errors are documented:
+          #   GetDashboard.action x5 (materialID, sourceWarehouseID,
+          #     destinationWarehouseID, quantity, idempotencyKey)
+          #   RecordScan.action x4 (same minus materialID, which recordScan
+          #     genuinely declares and supplies)
+          # Anything else - including materialID on RecordScan - fails the build.
+          grep "MDK Validator - \[MDK\] Error" validate.log \
+            | grep -v -E 'Missing property "(materialID|sourceWarehouseID|destinationWarehouseID|quantity|idempotencyKey)"\. at .* in .*GetDashboard\.action' \
+            | grep -v -E 'Missing property "(sourceWarehouseID|destinationWarehouseID|quantity|idempotencyKey)"\. at .* in .*RecordScan\.action' \
+            > unexpected-errors.log || true
+          if [ -s unexpected-errors.log ]; then
+            echo "Unexpected MDK validation errors:"
+            cat unexpected-errors.log
+            exit 1
+          fi
+          echo "MDK validation passed (only documented false positives present)."
+      - name: Bundle metadata (authoritative check)
+        run: npx mdk build --target zip --project mdk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mdk-upload-bundle
+          path: mdk/.build/uploadBundle.zip

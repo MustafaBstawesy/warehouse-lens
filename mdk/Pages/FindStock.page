@@ -1,0 +1,76 @@
+{
+	"_Name": "FindStock",
+	"_Type": "Page",
+	"OnLoaded": "/mdk/Rules/FindStock/SourcesRefresh.js",
+	"OnReturning": "/mdk/Rules/FindStock/SourcesRefresh.js",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,findstock_title)"
+	},
+	"Controls": [
+		{
+			"_Name": "FindStockSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "SummarySection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false
+					},
+					"Target": "/mdk/Rules/FindStock/SummaryItems.js",
+					"ObjectCell": {
+						"DetailImage": "{image}",
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"Footnote": "wl-muted"
+						}
+					}
+				},
+				{
+					"_Name": "SourcesSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,findstock_sectionSources)"
+					},
+					"Target": "/mdk/Rules/FindStock/SourceItems.js",
+					"EmptySection": {
+						"Caption": "$(L,findstock_empty)"
+					},
+					"ObjectCell": {
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"StatusText": "{status}",
+						"AccessoryType": "{accessory}",
+						"OnPress": "/mdk/Rules/FindStock/SourcePress.js",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"Footnote": "wl-selected-note",
+							"StatusText": "{statusStyle}"
+						}
+					}
+				}
+			]
+		}
+	],
+	"FioriToolbar": {
+		"_Name": "FindStockToolbar",
+		"_Type": "Control.Type.FioriToolbar",
+		"Items": [
+			{
+				"_Name": "ContinueButton",
+				"_Type": "FioriToolbarItem.Type.Button",
+				"Title": "/mdk/Rules/FindStock/ContinueTitle.js",
+				"ButtonType": "Primary",
+				"OnPress": "/mdk/Rules/FindStock/ContinuePress.js"
+			}
+		]
+	}
+}

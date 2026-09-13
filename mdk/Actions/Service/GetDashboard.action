@@ -1,0 +1,12 @@
+{
+	"_Type": "Action.Type.ODataService.CallFunction",
+	"Target": {
+		"Service": "/mdk/Services/WarehouseService.service",
+		"Function": {
+			"Name": "getDashboard",
+			"Parameters": {}
+		}
+	},
+	"ActionResult": { "_Name": "getDashboard" },
+	"ShowActivityIndicator": false
+}

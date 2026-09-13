@@ -1,0 +1,104 @@
+{
+	"_Name": "Home",
+	"_Type": "Page",
+	"OnLoaded": "/mdk/Rules/Home/HomeLoaded.js",
+	"OnReturning": "/mdk/Rules/Home/HomeLoaded.js",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,home_title)",
+		"PreferredCaptionSize": "Large",
+		"Items": [
+			{
+				"_Name": "RequestsItem",
+				"Caption": "$(L,home_requestsBtn)",
+				"Position": "Right",
+				"OnPress": "/mdk/Rules/Home/RequestsPress.js"
+			}
+		]
+	},
+	"Controls": [
+		{
+			"_Name": "HomeSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "GreetingSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false
+					},
+					"Target": "/mdk/Rules/Home/GreetingItems.js",
+					"ObjectCell": {
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"StatusText": "{status}",
+						"Styles": {
+							"Title": "wl-greeting-title",
+							"Subhead": "wl-greeting-subhead",
+							"StatusText": "{statusStyle}"
+						}
+					}
+				},
+				{
+					"_Name": "KpiSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,home_sectionToday)"
+					},
+					"Target": "/mdk/Rules/Home/KpiItems.js",
+					"ObjectCell": {
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"StatusText": "{status}",
+						"AccessoryType": "{accessory}",
+						"OnPress": "/mdk/Rules/Home/KpiPress.js",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"StatusText": "{statusStyle}"
+						}
+					}
+				},
+				{
+					"_Name": "RecentScansSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,home_sectionRecent)"
+					},
+					"Target": "/mdk/Rules/Home/RecentScanItems.js",
+					"EmptySection": {
+						"Caption": "$(L,home_emptyScans)"
+					},
+					"ObjectCell": {
+						"DetailImage": "{image}",
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"AccessoryType": "{accessory}",
+						"OnPress": "/mdk/Rules/Home/RecentScanPress.js",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"Footnote": "wl-muted"
+						}
+					}
+				}
+			]
+		}
+	],
+	"FioriToolbar": {
+		"_Name": "HomeToolbar",
+		"_Type": "Control.Type.FioriToolbar",
+		"Items": [
+			{
+				"_Name": "ScanButton",
+				"_Type": "FioriToolbarItem.Type.Button",
+				"Title": "$(L,home_scanBtn)",
+				"ButtonType": "Primary",
+				"OnPress": "/mdk/Rules/Home/ScanPress.js"
+			}
+		]
+	}
+}

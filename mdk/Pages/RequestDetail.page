@@ -1,0 +1,100 @@
+{
+	"_Name": "RequestDetail",
+	"_Type": "Page",
+	"OnLoaded": "/mdk/Rules/RequestDetail/DetailLoad.js",
+	"OnReturning": "/mdk/Rules/RequestDetail/DetailLoad.js",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,detail_title)"
+	},
+	"Controls": [
+		{
+			"_Name": "DetailSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "SuccessSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Visible": "/mdk/Rules/RequestDetail/SuccessVisible.js",
+					"Header": {
+						"UseTopPadding": false
+					},
+					"Target": "/mdk/Rules/RequestDetail/SuccessItems.js",
+					"ObjectCell": {
+						"DetailImage": "{image}",
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"Styles": {
+							"Title": "wl-success-title",
+							"Subhead": "wl-success-ref",
+							"Footnote": "wl-muted"
+						}
+					}
+				},
+				{
+					"_Name": "SummarySection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,detail_sectionSummary)"
+					},
+					"Target": "/mdk/Rules/RequestDetail/SummaryItems.js",
+					"EmptySection": {
+						"Caption": "$(L,detail_empty)"
+					},
+					"ObjectCell": {
+						"DetailImage": "{image}",
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"Description": "{desc}",
+						"StatusText": "{status}",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"Footnote": "wl-muted",
+							"StatusText": "{statusStyle}",
+							"Description": "wl-desc"
+						}
+					}
+				},
+				{
+					"_Name": "TimelineSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,detail_sectionTimeline)"
+					},
+					"Target": "/mdk/Rules/RequestDetail/TimelineItems.js",
+					"ObjectCell": {
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Footnote": "{footnote}",
+						"StatusText": "{status}",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead",
+							"Footnote": "wl-muted",
+							"StatusText": "{statusStyle}"
+						}
+					}
+				}
+			]
+		}
+	],
+	"FioriToolbar": {
+		"_Name": "DetailToolbar",
+		"_Type": "Control.Type.FioriToolbar",
+		"Items": [
+			{
+				"_Name": "ViewRequestsButton",
+				"_Type": "FioriToolbarItem.Type.Button",
+				"Title": "$(L,detail_viewRequestsBtn)",
+				"ButtonType": "Primary",
+				"Visible": "/mdk/Rules/RequestDetail/SuccessVisible.js",
+				"OnPress": "/mdk/Rules/RequestDetail/ViewRequestsPress.js"
+			}
+		]
+	}
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Warehouse Lens - demo QR labels</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #F5F7FA; margin: 24px; }
+  h1 { color: #102335; font-size: 20px; }
+  p  { color: #607185; max-width: 640px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; }
+  .label { background: #fff; border: 1px solid #DFE6ED; border-radius: 12px; padding: 16px; text-align: center; }
+  .label img { width: 100%; max-width: 220px; }
+  .code { font-weight: 700; color: #162536; font-size: 18px; margin-top: 8px; }
+  .name { color: #607185; font-size: 13px; }
+  @media print { body { background: #fff; } .label { break-inside: avoid; } }
+</style></head><body>
+<h1>Warehouse Lens - demo QR labels</h1>
+<p>Print this sheet and scan the labels with the Warehouse Lens app. Each QR encodes the plain
+material code (for example <strong>MAT-1042</strong>) - no URLs, no executable content.</p>
+<div class="grid">
+
+    <div class="label">
+      <img src="MAT-1042.png" alt="QR code for MAT-1042" />
+      <div class="code">MAT-1042</div>
+      <div class="name">Precision bearing</div>
+    </div>
+
+    <div class="label">
+      <img src="MAT-1010.png" alt="QR code for MAT-1010" />
+      <div class="code">MAT-1010</div>
+      <div class="name">Hydraulic pump seal kit</div>
+    </div>
+
+    <div class="label">
+      <img src="MAT-1156.png" alt="QR code for MAT-1156" />
+      <div class="code">MAT-1156</div>
+      <div class="name">Industrial V-belt B52</div>
+    </div>
+
+    <div class="label">
+      <img src="MAT-1287.png" alt="QR code for MAT-1287" />
+      <div class="code">MAT-1287</div>
+      <div class="name">Hex bolt M12x50 A2 (box)</div>
+    </div>
+
+    <div class="label">
+      <img src="MAT-1330.png" alt="QR code for MAT-1330" />
+      <div class="code">MAT-1330</div>
+      <div class="name">Conveyor roller 76 mm</div>
+    </div>
+
+    <div class="label">
+      <img src="MAT-1099.png" alt="QR code for MAT-1099" />
+      <div class="code">MAT-1099</div>
+      <div class="name">Laser distance sensor</div>
+    </div>
+</div>
+</body></html>

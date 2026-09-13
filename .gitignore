@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# CAP build output & local databases (incl. SQLite WAL sidecars)
+cap/gen/
+cap/dist/
+cap/*.db
+cap/*.sqlite
+cap/db.sqlite
+*.db-journal
+*.sqlite-shm
+*.sqlite-wal
+*.db-shm
+*.db-wal
+
+# MDK build output
+mdk/.build/
+mdk/build/
+mdk/.project.json
+
+# Environment & credentials — never commit real values
+.env
+.env.*
+!.env.example
+*-key.json
+default-env.json
+.cdsrc-private.json
+
+# Logs
+*.log
+logs/
+
+# MTA build artifacts
+mta_archives/
+*.mtar
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Test output
+coverage/
+
+mdk/.che/

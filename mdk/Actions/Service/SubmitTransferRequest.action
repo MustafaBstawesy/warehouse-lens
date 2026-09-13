@@ -1,0 +1,20 @@
+{
+	"_Type": "Action.Type.ODataService.CallFunction",
+	"Target": {
+		"Service": "/mdk/Services/WarehouseService.service",
+		"Function": {
+			"Name": "submitTransferRequest",
+			"Parameters": {
+				"materialID": "",
+				"sourceWarehouseID": "",
+				"destinationWarehouseID": "",
+				"quantity": 0,
+				"note": "",
+				"idempotencyKey": ""
+			}
+		}
+	},
+	"ActionResult": { "_Name": "submitTransferRequest" },
+	"ShowActivityIndicator": true,
+	"ActivityIndicatorText": "$(L,review_submitting)"
+}

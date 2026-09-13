@@ -1,0 +1,82 @@
+{
+	"_Name": "Scan",
+	"_Type": "Page",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,scan_title)"
+	},
+	"Controls": [
+		{
+			"_Name": "ScanSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "ScanFormSection",
+					"_Type": "Section.Type.FormCell",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,scan_sectionScan)"
+					},
+					"Controls": [
+						{
+							"_Name": "ScanHint",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,scan_hintLabel)",
+							"IsEditable": false,
+							"Value": "$(L,scan_hintText)",
+							"Styles": {
+								"Value": "wl-hint-value",
+								"Caption": "wl-hint-caption"
+							}
+						},
+						{
+							"_Name": "ManualEntry",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,scan_manualLabel)",
+							"PlaceHolder": "$(L,scan_manualPlaceholder)",
+							"AlternateInput": "Barcode",
+							"OnValueChange": "/mdk/Rules/Scan/ManualEntryChanged.js",
+							"Styles": {
+								"Value": "wl-scan-value",
+								"Caption": "wl-hint-caption"
+							}
+						}
+					]
+				},
+				{
+					"_Name": "DemoSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Visible": "/mdk/Rules/Scan/IsDemoMode.js",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,scan_sectionDemo)"
+					},
+					"Target": "/mdk/Rules/Scan/DemoItems.js",
+					"ObjectCell": {
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"AccessoryType": "{accessory}",
+						"OnPress": "/mdk/Rules/Scan/UseDemoMaterial.js",
+						"Styles": {
+							"Title": "wl-card-title",
+							"Subhead": "wl-card-subhead"
+						}
+					}
+				}
+			]
+		}
+	],
+	"FioriToolbar": {
+		"_Name": "ScanToolbar",
+		"_Type": "Control.Type.FioriToolbar",
+		"Items": [
+			{
+				"_Name": "OpenScannerButton",
+				"_Type": "FioriToolbarItem.Type.Button",
+				"Title": "$(L,scan_openScannerBtn)",
+				"ButtonType": "Primary",
+				"OnPress": "/mdk/Rules/Scan/OpenScanner.js"
+			}
+		]
+	}
+}

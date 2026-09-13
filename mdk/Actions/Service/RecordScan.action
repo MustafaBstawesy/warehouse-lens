@@ -1,0 +1,14 @@
+{
+	"_Type": "Action.Type.ODataService.CallFunction",
+	"Target": {
+		"Service": "/mdk/Services/WarehouseService.service",
+		"Function": {
+			"Name": "recordScan",
+			"Parameters": {
+				"materialID": ""
+			}
+		}
+	},
+	"ActionResult": { "_Name": "recordScan" },
+	"ShowActivityIndicator": false
+}

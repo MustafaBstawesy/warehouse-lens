@@ -1,0 +1,4 @@
+{
+	"_Type": "Action.Type.CheckBarcodeScannerPrerequisite",
+	"ActionResult": { "_Name": "checkScanner" }
+}

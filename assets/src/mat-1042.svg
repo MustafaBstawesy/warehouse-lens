@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Original illustration: sealed deep-groove ball bearing, flat style.
+       Created for the Warehouse Lens demo project. No external sources. -->
+  <rect width="512" height="512" fill="#E7F7F3"/>
+  <circle cx="256" cy="256" r="196" fill="#102335"/>
+  <circle cx="256" cy="256" r="168" fill="#1D3A52"/>
+  <circle cx="256" cy="256" r="140" fill="#087F82"/>
+  <!-- ball race -->
+  <circle cx="256" cy="256" r="112" fill="#0B5E60"/>
+  <g fill="#E7F7F3">
+    <circle cx="256" cy="144" r="22"/>
+    <circle cx="335.2" cy="176.8" r="22"/>
+    <circle cx="368" cy="256" r="22"/>
+    <circle cx="335.2" cy="335.2" r="22"/>
+    <circle cx="256" cy="368" r="22"/>
+    <circle cx="176.8" cy="335.2" r="22"/>
+    <circle cx="144" cy="256" r="22"/>
+    <circle cx="176.8" cy="176.8" r="22"/>
+  </g>
+  <circle cx="256" cy="256" r="84" fill="#102335"/>
+  <circle cx="256" cy="256" r="58" fill="#F5F7FA"/>
+  <circle cx="256" cy="256" r="58" fill="none" stroke="#DFE6ED" stroke-width="4"/>
+  <!-- keyway notch on the bore -->
+  <rect x="244" y="198" width="24" height="16" rx="3" fill="#102335"/>
+  <!-- subtle highlight -->
+  <path d="M 122 180 A 168 168 0 0 1 210 96" fill="none" stroke="#3D5A73" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+</svg>

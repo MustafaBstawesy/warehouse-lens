@@ -1,0 +1,13 @@
+{
+  "name": "warehouse-lens-asset-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generates QR demo labels and rasterizes the original SVG illustrations for the Warehouse Lens demo. Run once; outputs are committed.",
+  "scripts": {
+    "generate": "node generate.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "sharp": "^0.33.5"
+  }
+}

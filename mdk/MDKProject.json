@@ -1,0 +1,8 @@
+{
+	"AppName": "Warehouse Lens",
+	"AppVersion": "1.0.0",
+	"BundleID": "com.sap.mdk.warehouselens",
+	"Externals": [],
+	"NSPlugins": [],
+	"UrlScheme": "warehouselens"
+}

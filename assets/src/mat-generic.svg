@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Original illustration: warehouse crate with spare part symbol, flat style.
+       Created for the Warehouse Lens demo project. No external sources. -->
+  <rect width="512" height="512" fill="#E7F7F3"/>
+  <!-- crate body -->
+  <rect x="96" y="176" width="320" height="240" rx="18" fill="#102335"/>
+  <rect x="96" y="176" width="320" height="64" rx="18" fill="#1D3A52"/>
+  <rect x="96" y="222" width="320" height="18" fill="#1D3A52"/>
+  <!-- lid -->
+  <rect x="72" y="128" width="368" height="72" rx="16" fill="#087F82"/>
+  <rect x="228" y="112" width="56" height="28" rx="10" fill="#0B5E60"/>
+  <!-- gear symbol on crate -->
+  <g transform="translate(256 320)">
+    <g fill="#E7F7F3">
+      <rect x="-10" y="-74" width="20" height="26" rx="6"/>
+      <rect x="-10" y="48" width="20" height="26" rx="6"/>
+      <rect x="-74" y="-10" width="26" height="20" rx="6"/>
+      <rect x="48" y="-10" width="26" height="20" rx="6"/>
+      <g transform="rotate(45)">
+        <rect x="-10" y="-74" width="20" height="26" rx="6"/>
+        <rect x="-10" y="48" width="20" height="26" rx="6"/>
+        <rect x="-74" y="-10" width="26" height="20" rx="6"/>
+        <rect x="48" y="-10" width="26" height="20" rx="6"/>
+      </g>
+    </g>
+    <circle r="54" fill="#E7F7F3"/>
+    <circle r="26" fill="#102335"/>
+  </g>
+  <!-- crate feet -->
+  <rect x="120" y="416" width="60" height="20" rx="6" fill="#0B1826"/>
+  <rect x="332" y="416" width="60" height="20" rx="6" fill="#0B1826"/>
+</svg>

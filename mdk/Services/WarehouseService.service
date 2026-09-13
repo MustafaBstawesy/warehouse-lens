@@ -1,0 +1,9 @@
+{
+	"DestinationName": "WarehouseLens",
+	"SourceType": "Mobile",
+	"ServiceUrl": "",
+	"PathSuffix": "",
+	"LanguageURLParam": "",
+	"OfflineEnabled": false,
+	"OnlineOptions": {}
+}

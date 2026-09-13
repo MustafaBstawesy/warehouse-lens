@@ -1,0 +1,6 @@
+{
+	"_Type": "Action.Type.Message",
+	"Title": "$(L,generic_errorTitle)",
+	"Message": "",
+	"OKCaption": "$(L,generic_ok)"
+}

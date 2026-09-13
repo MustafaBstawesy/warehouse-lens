@@ -1,0 +1,126 @@
+{
+	"_Name": "Review",
+	"_Type": "Page",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,review_title)"
+	},
+	"Controls": [
+		{
+			"_Name": "ReviewSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "TransferSection",
+					"_Type": "Section.Type.FormCell",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,review_sectionTransfer)"
+					},
+					"Controls": [
+						{
+							"_Name": "MaterialField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,review_materialLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/Review/MaterialValue.js",
+							"Styles": { "Value": "wl-info-value" }
+						},
+						{
+							"_Name": "FromField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,review_fromLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/Review/FromValue.js",
+							"Styles": { "Value": "wl-info-value" }
+						},
+						{
+							"_Name": "ToField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,review_toLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/Review/ToValue.js",
+							"Styles": { "Value": "wl-info-value" }
+						},
+						{
+							"_Name": "AvailableField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,review_availableLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/Review/AvailableAtSourceValue.js",
+							"Styles": { "Value": "wl-value-strong" }
+						}
+					]
+				},
+				{
+					"_Name": "QuantitySection",
+					"_Type": "Section.Type.FormCell",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,review_sectionQuantity)"
+					},
+					"Controls": [
+						{
+							"_Name": "QuantityStepper",
+							"_Type": "Control.Type.FormCell.Stepper",
+							"Caption": "$(L,review_quantityLabel)",
+							"HelperText": "$(L,review_quantityHelper)",
+							"Value": "/mdk/Rules/Review/QuantityDefault.js",
+							"MinValue": 1,
+							"MaxValue": "/mdk/Rules/Review/QuantityMax.js",
+							"Step": 1,
+							"OnValueChange": "/mdk/Rules/Review/QuantityChanged.js"
+						}
+					]
+				},
+				{
+					"_Name": "NoteSection",
+					"_Type": "Section.Type.FormCell",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,review_sectionNote)"
+					},
+					"Controls": [
+						{
+							"_Name": "NoteInput",
+							"_Type": "Control.Type.FormCell.Note",
+							"Caption": "$(L,review_noteLabel)",
+							"PlaceHolder": "$(L,review_notePlaceholder)",
+							"Value": "/mdk/Rules/Review/NoteDefault.js",
+							"OnValueChange": "/mdk/Rules/Review/NoteChanged.js"
+						},
+						{
+							"_Name": "NoteCounter",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,review_noteCounterLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/Review/NoteCounterValue.js",
+							"Styles": { "Value": "wl-muted" }
+						},
+						{
+							"_Name": "ApprovalHint",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,review_approvalLabel)",
+							"IsEditable": false,
+							"Value": "$(L,review_approvalHint)",
+							"Styles": { "Value": "wl-hint-value" }
+						}
+					]
+				}
+			]
+		}
+	],
+	"FioriToolbar": {
+		"_Name": "ReviewToolbar",
+		"_Type": "Control.Type.FioriToolbar",
+		"Items": [
+			{
+				"_Name": "SubmitButton",
+				"_Type": "FioriToolbarItem.Type.Button",
+				"Title": "$(L,review_submitBtn)",
+				"ButtonType": "Primary",
+				"OnPress": "/mdk/Rules/Review/SubmitPress.js"
+			}
+		]
+	}
+}

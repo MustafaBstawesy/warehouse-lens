@@ -1,0 +1,54 @@
+{
+  "xsappname": "warehouse-lens-cap",
+  "tenant-mode": "dedicated",
+  "description": "Warehouse Lens - internal stock transfer requests",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.WarehouseUser",
+      "description": "Submit and read own transfer requests, read materials and availability"
+    },
+    {
+      "name": "$XSAPPNAME.WarehouseAdmin",
+      "description": "Read all transfer requests and audit events"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "WarehouseUser",
+      "description": "Warehouse employee (requester)",
+      "scope-references": [
+        "$XSAPPNAME.WarehouseUser"
+      ]
+    },
+    {
+      "name": "WarehouseAdmin",
+      "description": "Warehouse supervisor / administrator",
+      "scope-references": [
+        "$XSAPPNAME.WarehouseUser",
+        "$XSAPPNAME.WarehouseAdmin"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "WL Warehouse User",
+      "description": "Warehouse Lens - warehouse employee",
+      "role-template-references": [
+        "$XSAPPNAME.WarehouseUser"
+      ]
+    },
+    {
+      "name": "WL Warehouse Supervisor",
+      "description": "Warehouse Lens - supervisor",
+      "role-template-references": [
+        "$XSAPPNAME.WarehouseAdmin"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.hana.ondemand.com/**"
+    ]
+  }
+}

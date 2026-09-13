@@ -1,0 +1,102 @@
+{
+	"_Name": "MaterialDetails",
+	"_Type": "Page",
+	"OnLoaded": "/mdk/Rules/MaterialDetails/DetailsRefresh.js",
+	"OnReturning": "/mdk/Rules/MaterialDetails/DetailsRefresh.js",
+	"ActionBar": {
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "$(L,details_title)",
+		"Items": [
+			{
+				"_Name": "RefreshItem",
+				"Caption": "$(L,details_refreshBtn)",
+				"Position": "Right",
+				"OnPress": "/mdk/Rules/MaterialDetails/RefreshPress.js"
+			}
+		]
+	},
+	"Controls": [
+		{
+			"_Name": "DetailsSectionedTable",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"_Name": "HeroSection",
+					"_Type": "Section.Type.ObjectTable",
+					"Header": {
+						"UseTopPadding": false
+					},
+					"Target": "/mdk/Rules/MaterialDetails/HeroItems.js",
+					"ObjectCell": {
+						"DetailImage": "{image}",
+						"Title": "{title}",
+						"Subhead": "{subhead}",
+						"Description": "{desc}",
+						"StatusText": "{status}",
+						"Styles": {
+							"Title": "wl-hero-title",
+							"Subhead": "wl-hero-subhead",
+							"StatusText": "{statusStyle}",
+							"Description": "wl-desc"
+						}
+					}
+				},
+				{
+					"_Name": "InfoSection",
+					"_Type": "Section.Type.FormCell",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,details_sectionAvailability)"
+					},
+					"Controls": [
+						{
+							"_Name": "WarehouseField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,details_warehouseLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/MaterialDetails/WarehouseValue.js",
+							"Styles": { "Value": "wl-info-value" }
+						},
+						{
+							"_Name": "AvailableHereField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,details_availableLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/MaterialDetails/AvailableHereValue.js",
+							"Styles": { "Value": "wl-value-strong" }
+						},
+						{
+							"_Name": "BaseUnitField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,details_baseUnitLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/MaterialDetails/BaseUnitValue.js",
+							"Styles": { "Value": "wl-info-value" }
+						},
+						{
+							"_Name": "LastRefreshedField",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Caption": "$(L,details_refreshedLabel)",
+							"IsEditable": false,
+							"Value": "/mdk/Rules/MaterialDetails/LastRefreshedValue.js",
+							"Styles": { "Value": "wl-muted" }
+						}
+					]
+				}
+			]
+		}
+	],
+	"FioriToolbar": {
+		"_Name": "DetailsToolbar",
+		"_Type": "Control.Type.FioriToolbar",
+		"Items": [
+			{
+				"_Name": "FindStockButton",
+				"_Type": "FioriToolbarItem.Type.Button",
+				"Title": "$(L,details_findStockBtn)",
+				"ButtonType": "Primary",
+				"OnPress": "/mdk/Rules/MaterialDetails/FindStockPress.js"
+			}
+		]
+	}
+}

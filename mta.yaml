@@ -1,0 +1,72 @@
+_schema-version: "3.3"
+ID: warehouse-lens
+version: 1.0.0
+description: Warehouse Lens - internal stock transfer requests. CAP OData V4 backend on BTP Cloud Foundry, consumed by an SAP MDK mobile client via SAP Mobile Services.
+
+parameters:
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        # mbt executes commands without a shell, so shell syntax (cd, &&) must run via bash -c
+        - bash -c "cd cap && (npm ci || npm install) && npm run build"
+
+modules:
+  # --------------------------------------------------------------------------
+  # CAP Node.js service (OData V4 at /odata/v4/warehouse), XSUAA-protected.
+  # TypeScript is precompiled by `npm run build` (cds build + tsc).
+  # --------------------------------------------------------------------------
+  - name: warehouse-lens-srv
+    type: nodejs
+    path: cap/gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 512M
+    build-parameters:
+      builder: npm
+      ignore:
+        - "node_modules/"
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: warehouse-lens-uaa
+      - name: warehouse-lens-db
+      - name: warehouse-lens-destination
+
+  # --------------------------------------------------------------------------
+  # HANA Cloud schema deployer (tables, unique indexes, CSV master data).
+  # Requires a running SAP HANA Cloud instance mapped to the space.
+  # --------------------------------------------------------------------------
+  - name: warehouse-lens-db-deployer
+    type: hdb
+    path: cap/gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+    requires:
+      - name: warehouse-lens-db
+
+resources:
+  - name: warehouse-lens-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: cap/xs-security.json
+
+  - name: warehouse-lens-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+
+  - name: warehouse-lens-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
