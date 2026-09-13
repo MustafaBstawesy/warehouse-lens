@@ -28,9 +28,9 @@ The suite lives in `cap/test/` (`units.test.ts`, `submit-transfer-request.test.t
 `read-access.test.ts`) and consists of 37 tests that boot the real CAP service via `cds.test()` - every
 case goes through the real OData protocol layer, authorization checks included -
 plus 4 pure unit tests in `units.test.ts` for the fingerprint and
-reference-format helpers. All 41 tests pass locally (Windows, Node 24). The CI
-workflow runs the same suite on Ubuntu / Node 22; its first execution happens
-on GitHub after the initial push.
+reference-format helpers. All 41 tests pass locally (Windows, Node 24) and in the
+GitHub Actions CI run on Ubuntu / Node 22 (both jobs green on the first run
+after the initial push).
 
 **Submission validation** (`submit-transfer-request.test.ts`)
 
