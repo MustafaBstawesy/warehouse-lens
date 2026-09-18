@@ -5,7 +5,8 @@
   "description": "Warehouse Lens - SAP BTP portfolio app: MDK mobile client (mdk/) + CAP TypeScript backend (cap/). See README.md.",
   "scripts": {
     "mdk:validate": "mdk validate --project mdk",
-    "mdk:bundle": "mdk build --target zip --project mdk"
+    "mdk:bundle": "mdk build --target zip --project mdk",
+    "mta:build": "mbt build -p cf"
   },
   "devDependencies": {
     "@sap/mdk-tools": "^1.16.0"

@@ -41,6 +41,7 @@ Assign these to the subaccount before deploying (BTP cockpit > Entitlements):
 | `cf` CLI (v8+) | Cloud Foundry login and deployment | cloudfoundry.io downloads |
 | MultiApps CF plugin | `cf deploy` for MTA archives | `cf install-plugin multiapps` |
 | `mbt` | Build the MTA archive | `npm i -g mbt` |
+| GNU `make` | Required by `mbt` (it generates a Makefile and runs `make`) | Linux/macOS: usually preinstalled. Windows: `winget install ezwinports.make` (then open a new shell so it is on PATH) |
 | MDK tooling | Validate/bundle the client (`@sap/mdk-tools`, pinned at repo root) | `npm install` at repo root |
 | SAP Business Application Studio (optional) | Alternative MDK deploy/build environment | BTP service subscription |
 
@@ -48,7 +49,7 @@ Assign these to the subaccount before deploying (BTP cockpit > Entitlements):
 
 ```bash
 cf login -a <api-endpoint>        # select <org> and <space>
-mbt build                          # produces mta_archives/warehouse-lens_1.0.0.mtar
+npm run mta:build                  # = mbt build -p cf; produces mta_archives/warehouse-lens_1.0.0.mtar
 cf deploy mta_archives/warehouse-lens_1.0.0.mtar
 ```
 
