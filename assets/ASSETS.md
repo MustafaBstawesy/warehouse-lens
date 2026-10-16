@@ -21,6 +21,5 @@ npm install
 npm run generate
 ```
 
-These original assets are provided as part of this repository for
-demonstration purposes. The repository itself carries no open-source
-license file by deliberate choice of the author (see README).
+These original assets are part of this repository and are released under
+the same MIT License as the code (see [LICENSE](../LICENSE)).

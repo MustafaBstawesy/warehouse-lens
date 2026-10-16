@@ -2,6 +2,7 @@
   "name": "warehouse-lens",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Warehouse Lens - SAP BTP portfolio app: MDK mobile client (mdk/) + CAP TypeScript backend (cap/). See README.md.",
   "scripts": {
     "mdk:validate": "mdk validate --project mdk",

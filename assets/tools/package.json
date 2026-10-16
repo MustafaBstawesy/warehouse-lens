@@ -2,6 +2,7 @@
   "name": "warehouse-lens-asset-tools",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Generates QR demo labels and rasterizes the original SVG illustrations for the Warehouse Lens demo. Run once; outputs are committed.",
   "scripts": {
     "generate": "node generate.js"

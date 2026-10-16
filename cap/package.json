@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Warehouse Lens - CAP OData V4 backend for the MDK mobile client. Internal stock transfer requests: scan a material, check availability across warehouses, submit a transfer request (submitting never reserves or moves stock).",
   "private": true,
+  "license": "MIT",
   "engines": {
     "node": ">=20"
   },

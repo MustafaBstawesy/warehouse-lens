@@ -143,3 +143,7 @@ Honesty section: this is a portfolio project, and the line between verified and 
 - **Pending requests do not reserve stock**: availability is rechecked server-side at submit time, but nothing is held afterward, so pending requests can collectively oversubscribe a warehouse.
 - **Demo auth in dev**: local development uses CAP mocked authentication with fixed users (`alex`, `dana`, `sam`, `bob`); XSUAA with real role collections applies to the production profile (deployed on a BTP trial, see above).
 - **Local backend and phones**: a phone cannot reach `localhost` on the dev machine - use the machine's LAN IP (with the mocked-auth basic credentials) or deploy to BTP for on-device tests.
+
+## License
+
+MIT - see [LICENSE](LICENSE).
