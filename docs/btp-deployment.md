@@ -3,12 +3,20 @@
 How to deploy the Warehouse Lens backend to SAP BTP Cloud Foundry and connect the
 MDK client through SAP Mobile Services.
 
-> **Status: this project is NOT currently deployed.** No BTP credentials were used
-> while building it. The steps below are the documented deployment path for the
-> artifacts in this repository (`mta.yaml`, `cap/xs-security.json`, `mdk/`), and their
-> shape was validated by a prior sibling project (`hh-mobile-btp`) that deployed
-> successfully with the same module/resource layout on a trial subaccount (us10-001).
-> Anything not covered by that prior run is untested.
+> **Status:** the backend MTA was deployed to an SAP BTP trial in September 2026
+> (Cloud Foundry, us10-001): XSUAA, the HDI container on SAP HANA Cloud and the
+> destination service instance were created, the HDI deployer task succeeded, and
+> unauthenticated calls to the service return `401`. The Mobile Services app and its
+> `WarehouseLens` destination were configured. The MDK metadata has not yet been
+> deployed to Mobile Services and no device has been onboarded. Trial resources stop
+> automatically, so this is a verified deployment, not a permanently running one.
+>
+> **Login path for the MDK client:** configure the Mobile Services app to sign users
+> in through the backend's own XSUAA instance (`warehouse-lens-uaa`). The forwarded
+> user token is then issued for the CAP app, so the `WarehouseLens` destination's
+> Forward Authentication works without cross-app grants. `cap/xs-security.json`
+> allows the Mobile Services hosts (`*.cfapps.us10-001` / `*.cfapps.us10`) as
+> redirect URIs for exactly this reason.
 
 ## Placeholders used in this guide
 

@@ -37,9 +37,11 @@ flowchart LR
 - Persistence is profile-driven: SQLite in development and tests, HANA Cloud
   in the production profile (`mta.yaml`: modules `warehouse-lens-srv` and
   `warehouse-lens-db-deployer`, resource `warehouse-lens-db`).
-- The BTP path (Mobile Services registration, destination, HANA deployment,
-  XSUAA login) is configured but has not been deployed in this project; see
-  the verification notes in the README and `docs/btp-deployment.md`.
+- The backend MTA (CAP service, HDI container on HANA Cloud, XSUAA) was deployed
+  to an SAP BTP trial in September 2026, and the Mobile Services app and its
+  `WarehouseLens` destination were configured. The MDK client has not yet run
+  on a device; see the verification notes in the README and
+  `docs/btp-deployment.md`.
 
 ## Authentication flow
 
@@ -131,7 +133,7 @@ sequenceDiagram
     C->>C: clear draft key only after<br/>backend confirms (result has ID)
 ```
 
-Properties verified by the test suite (40 Jest tests, plus a live HTTP smoke
+Properties verified by the test suite (41 Jest tests, plus a live HTTP smoke
 test against `cds watch`):
 
 - An identical retry returns the same request with `replayed: true` - same

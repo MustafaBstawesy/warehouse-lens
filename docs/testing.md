@@ -6,8 +6,9 @@ unexecuted, and the "Unverified areas" section lists what has never been run.
 
 ## Verification pyramid
 
-1. **Automated backend tests** - 40 Jest tests against the real CAP service on
-   in-memory SQLite (HTTP level, mocked auth). Run on every push in CI.
+1. **Automated backend tests** - 41 Jest tests (37 against the real CAP service on
+   in-memory SQLite at HTTP level with mocked auth, 4 pure unit tests). Run in CI
+   on every push to `main` and every pull request.
 2. **Static checks** - TypeScript typecheck and a full production build.
 3. **MDK metadata checks** - `mdk validate` plus the authoritative
    `mdk build --target zip` bundle.
