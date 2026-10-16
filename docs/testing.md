@@ -191,12 +191,15 @@ Being explicit about what has never been run:
 
 - **Device runtime**: no native Android/iOS run; camera scanning, stepper
   appearance, and all checklist items above are untested on hardware.
-- **Mobile Services**: app registration, destination, and client onboarding are
-  documented but not executed for this app.
-- **HANA**: production deployment targets HANA Cloud via `mta.yaml`; only SQLite
-  (file and in-memory) has actually been exercised.
-- **XSUAA**: the production security profile (`xs-security.json`) is configured
-  but the login flow has not been run; all auth testing used CAP mocked auth.
+- **Mobile Services**: the app and its `WarehouseLens` destination were created on
+  a BTP trial, but the MDK metadata has not been deployed and no client has been
+  onboarded.
+- **HANA**: the MTA was deployed to a BTP trial and the HDI deployer task
+  succeeded (schema + master data in HANA Cloud), but no authenticated read
+  against it has been observed; business-rule testing ran on SQLite.
+- **XSUAA**: deployed and enforcing (`401` for unauthenticated calls, role
+  collection assigned to a user), but the end-to-end user login through the MDK
+  client has not been run; automated auth testing used CAP mocked auth.
 - **Toolbar dynamic title**: if the FioriToolbar does not re-evaluate its title
   rule on page redraw, the documented fallback is a static label.
 - **OnLoaded vs OnLaunch race**: page `OnLoaded` may fire before the OData service
@@ -204,6 +207,7 @@ Being explicit about what has never been run:
   tolerates the failure with an offline hint, and a retry happens on the next
   `OnReturning`. Untested on device.
 
-The app is not deployed anywhere; source on GitHub is not the same as a verified
-deployment. Submitting a transfer request does not reserve stock or post any
-goods movement to SAP S/4HANA - that is a future extension point only.
+The backend was deployed to an SAP BTP trial (September 2026); trial resources
+stop automatically, so it is a verified deployment rather than a permanently
+running instance. Submitting a transfer request does not reserve stock or post
+any goods movement to SAP S/4HANA - that is a future extension point only.

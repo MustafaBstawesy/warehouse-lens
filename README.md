@@ -36,7 +36,7 @@ flowchart LR
 ```
 
 - **MDK client** (`mdk/`): 7 metadata-driven pages (Home, Scan, MaterialDetails, FindStock, Review, RequestDetail, Requests), native barcode scanning, online-only OData.
-- **SAP Mobile Services**: app registration, onboarding, and destination that forwards to the CAP service (deployment profile only; see status below).
+- **SAP Mobile Services**: app registration, onboarding, and destination that forwards to the CAP service (app and destination configured on a BTP trial; client onboarding not yet run - see status below).
 - **CAP backend** (`cap/`): TypeScript service handler with validation, idempotent submission, transactional reference numbering, and role-based access (`WarehouseUser` / `WarehouseAdmin`).
 - **Database**: SQLite file for dev (persists across restarts), in-memory for tests, HANA Cloud (hdi-shared) via `mta.yaml` for the production profile.
 
@@ -106,7 +106,7 @@ npm run demo:advance TR-001004 -- --reject "reason"
 - [docs/local-development.md](docs/local-development.md) - prerequisites, seeding, backend startup, MDK tooling, Android setup, troubleshooting
 - [docs/design.md](docs/design.md) - design system, screen designs, and MDK-specific deviations
 - [docs/testing.md](docs/testing.md) - automated test inventory and the manual on-device checklist
-- [docs/btp-deployment.md](docs/btp-deployment.md) - BTP / Mobile Services / HANA deployment guide (profile, not yet executed)
+- [docs/btp-deployment.md](docs/btp-deployment.md) - BTP / Mobile Services / HANA deployment guide (backend deployment executed on a BTP trial)
 - [docs/demo-script.md](docs/demo-script.md) - 45-60 second demo recording script
 - [assets/qr-labels/print-sheet.html](assets/qr-labels/print-sheet.html) - printable QR labels for scanning demos (per-material PNGs/SVGs alongside)
 
@@ -123,11 +123,17 @@ Honesty section: this is a portfolio project, and the line between verified and 
 - `mdk build --target zip` succeeds (webpack rule bundle, NSS style compile, i18n, binding cross-references) and produces `mdk/.build/uploadBundle.zip`.
 - CI (`.github/workflows/ci.yml`) runs all of the above on ubuntu / Node 22 without any SAP credentials.
 
-**Not verified (no BTP credentials or device/emulator run in this session):**
+**Deployed to an SAP BTP trial (September 2026, Cloud Foundry, AWS US East):**
 
-- No native Android/iOS runtime run yet: no app screenshots exist, and camera scanning, Stepper appearance, the dynamic FindStock toolbar title, and page-load timing against service initialization are untested on a device (fallbacks are documented where relevant).
-- Mobile Services app registration, destination configuration, client onboarding, HANA deployment, and the XSUAA login flow have not been executed for this app. `mta.yaml` and `docs/btp-deployment.md` provide the profile; a sibling project on this machine deployed successfully with the same shapes on a trial account.
-- The app is **not deployed anywhere**; source on GitHub is not a deployment.
+- `mbt build` produced the `.mtar`; `cf deploy` created the XSUAA instance (role collections `WL Warehouse User` / `WL Warehouse Supervisor`), an HDI container on an SAP HANA Cloud (`hana-free`) instance, and the destination service instance, then ran the HDI deployer task (**succeeded** - tables and master data loaded into HANA) and started `warehouse-lens-srv`.
+- An unauthenticated request to the deployed service returns `401` - XSUAA protection is enforced. A role collection was assigned to a real user.
+- A Mobile Services MDK app and its `WarehouseLens` destination (Forward Authentication) were created and configured.
+- Trial resources are ephemeral: free-tier HANA Cloud and trial apps stop automatically, so this is a verified deployment, not a permanently running instance.
+
+**Not verified yet:**
+
+- No native Android/iOS runtime run: the MDK metadata has not been deployed to Mobile Services, no device has been onboarded, and no app screenshots exist. Camera scanning, Stepper appearance, the dynamic FindStock toolbar title, and page-load timing against service initialization are untested on a device (fallbacks are documented where relevant).
+- No authenticated OData read against the BTP deployment has been observed (the backend has no approuter, so a browser gets `401` by design; the MDK client is the intended authenticated consumer). Data presence in HANA is evidenced by the successful deployer task, and every business rule is covered by the automated tests against SQLite.
 - No screen mockup file was provided; the visual design was implemented from the written design-system spec (colors, spacing, hierarchy, one primary action per screen). `docs/design.md` lists the MDK-specific deviations.
 
 ## Limitations
@@ -135,5 +141,5 @@ Honesty section: this is a portfolio project, and the line between verified and 
 - **Online-only**: `OfflineEnabled` is false by design; availability checks and submission require a connection, and the client shows clear offline messages instead of syncing.
 - **Bounded lists**: the request list loads at most 50 requests (`$top=50`, newest first) with server-side search and status filtering; scan history is bounded to the 10 most recent per user.
 - **Pending requests do not reserve stock**: availability is rechecked server-side at submit time, but nothing is held afterward, so pending requests can collectively oversubscribe a warehouse.
-- **Demo auth in dev**: local development uses CAP mocked authentication with fixed users (`alex`, `dana`, `sam`, `bob`); XSUAA with real role collections applies only to the (unexecuted) production profile.
+- **Demo auth in dev**: local development uses CAP mocked authentication with fixed users (`alex`, `dana`, `sam`, `bob`); XSUAA with real role collections applies to the production profile (deployed on a BTP trial, see above).
 - **Local backend and phones**: a phone cannot reach `localhost` on the dev machine - use the machine's LAN IP (with the mocked-auth basic credentials) or deploy to BTP for on-device tests.
